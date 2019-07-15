@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <Button
+            android:id="@+id/fragment_login_button_login"
+            android:layout_width="210dp"
+            android:layout_height="100dp"
+            android:background="@color/colorRed"
+            android:text="@string/login"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+
+    />
+
+    <ImageView
+            android:id="@+id/fragment_login_imageView_green_corner_right"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorGreen"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+    />
+
+    <ImageView
+            android:id="@+id/fragment_login_imageView_green_corner_left"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorGreen"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+    />
+
+    <ImageView
+            android:id="@+id/fragment_login_imageView_top_green_bar"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:background="@color/colorGreen"
+            android:layout_below="@id/fragment_login_button_login"
+            android:layout_alignParentBottom="true"
+    />
+
+    <ImageView
+            android:id="@+id/fragment_login_imageView_pizza_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pizza"
+    />
+
+    <ImageView
+            android:id="@+id/fragment_login_imageView_bottom_green_bar"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:background="@color/colorGreen"
+            android:layout_alignParentBottom="true"
+    />
+
+
+</RelativeLayout>
