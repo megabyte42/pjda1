@@ -6,6 +6,18 @@
     <string name="newline"/>
     <string name="name">Name:</string>
     <string name="password">Password:</string>
+    <string name="decimal">.</string>
+    <string name="blank_cost">__</string>
+    <string name="amount">Amount: $</string>
+    <string name="this_order">This Order</string>
+    <string name="default_customer0">Mary P.</string>
+    <string name="default_phone_number0">555-555-5555</string>
+    <string name="large_cheese">1 Lg Chs</string>
+    <string name="pepsi">1 2L pepsi</string>
+    <string name="garlic">1 garlic</string>
+    <string name="cheese">1 cheese</string>
+    <string name="default_customer_note0">Please use side door</string>
+    <string name="default_amount0">$18.52 cash</string>
     <string-array name="planets_array">
         <item>Mer</item>
         <item>Venus</item>
