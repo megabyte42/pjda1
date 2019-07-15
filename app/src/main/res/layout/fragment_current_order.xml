@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_current_order_layout"
+>
+
+
+    <ImageButton
+            android:id="@+id/fragment_current_order_imageButton_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorRed"
+            android:src="@drawable/profile"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+    />
+
+    <ImageButton
+            android:id="@+id/fragment_current_order_imageButton_settings"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorRed"
+            android:src="@drawable/settings"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+    />
+
+    <ImageView
+            android:id="@+id/fragment_current_order_imageView_logo"
+            android:layout_width="210dp"
+            android:layout_height="100dp"
+            android:background="@color/colorGreen"
+            android:src="@drawable/logo"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+
+    />
+
+    <ImageButton
+            android:id="@+id/fragment_current_order_imageButton_back_arrow"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/colorRed"
+            android:layout_below="@id/fragment_current_order_imageView_logo"
+
+    />
+
+    <Button
+            android:id="@+id/fragment_current_order_button_this_order"
+            android:text="This Order"
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:background="@color/colorRed"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/fragment_current_order_imageView_logo"
+
+    />
+
+    <!-- <ImageView
+            android:id="@+id/fragment_current_order_imageView_top_green_bar"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/colorGreen"
+            android:layout_below="@id/fragment_current_order_imageView_logo"
+    /> -->
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/fragment_current_order_button_recent_deliveries"
+    >
+
+        <TextView
+                android:id="@+id/fragment_current_order_customer_name"
+                android:text="Mary P."
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_customer_phone_number"
+                android:text="555-555-5555"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_newline0"
+                android:text="@string/newline"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_order0"
+                android:text="1 Lg Chs"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_order1"
+                android:text="1 2L pepsi"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_order2"
+                android:text="1 garlic"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_order3"
+                android:text="1 cheese"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_newline1"
+                android:text="@string/newline"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_customer_notes"
+                android:text="Please use side door"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_newline2"
+                android:text="@string/newline"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_customer_bill"
+                android:text="$18.52 cash"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/fragment_current_order_newline3"
+                android:text="@string/newline"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+    </LinearLayout>
+    
+
+    <!--<ImageView
+            android:id="@+id/fragment_current_order_imageView_bottom_green_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorGreen"
+            android:layout_above="@id/fragment_current_order_button_recent_deliveries"
+    /> -->
+
+    <Button
+            android:id="@+id/fragment_current_order_button_recent_deliveries"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/recent_deliveries"
+            android:textSize="30sp"
+            android:background="@color/colorRed"
+    />
+
+
+</RelativeLayout>
