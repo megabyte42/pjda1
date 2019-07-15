@@ -2,4 +2,11 @@
     <string name="app_name">basicactivity</string>
     <string name="action_settings">Settings</string>
     <string name="recent_deliveries">Recent Deliveries</string>
+    <string name="login">Login</string>
+    <string-array name="planets_array">
+        <item>Mer</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+    </string-array>
 </resources>
