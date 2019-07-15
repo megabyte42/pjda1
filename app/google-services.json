@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "532537263924",
+    "firebase_url": "https://papajohnsdeliveryapp.firebaseio.com",
+    "project_id": "papajohnsdeliveryapp",
+    "storage_bucket": "papajohnsdeliveryapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532537263924:android:6543f1937b793f2c",
+        "android_client_info": {
+          "package_name": "com.lab1.basicactivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532537263924-0fp6splk3ccf04e2kl613gk5cutogmu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbVuqqRNMvITKELuw28xstUWtiN3a-vkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532537263924-0fp6splk3ccf04e2kl613gk5cutogmu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
