@@ -78,16 +78,123 @@
                 android:padding="5dp"
         />
 
+        <TextView
+                android:id="@+id/fragment_profile_textView_clock_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3:48"
+                android:textSize="20sp"
+                android:padding="5dp"
+                android:background="@color/colorGreen"
+                android:layout_toRightOf="@id/fragment_profile_textView_clock_status"
+                android:layout_below="@id/fragment_profile_textView_driver_number"
+        />
+
+        <ToggleButton
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="185dp"
+                android:layout_below="@id/fragment_profile_textView_driver_number"
+                android:textOn="Clock Out"
+                android:textOff="Clock In"
+                android:background="@color/colorRed"
+        />
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
         <org.honorato.multistatetogglebutton.MultiStateToggleButton
                 android:id="@+id/mstb_multi_id"
-                android:layout_width="300dp"
-                android:layout_height="20dp"
+                android:layout_width="400dp"
+                android:layout_height="40dp"
                 android:layout_below="@+id/fragment_profile_textView_clock_status"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dip"
-                mstb:values="@array/planets_array"
-                mstb:mstbPrimaryColor="@color/colorRed"
-                mstb:mstbSecondaryColor="@color/colorBlack"/>
+                mstb:values="@array/time_array"
+                mstb:mstbPrimaryColor="@color/colorWhite"
+                mstb:mstbSecondaryColor="@color/colorBlack"
+                mstb:mstbColorNotPressedBackground="@color/colorBlack"
+                mstb:mstbColorPressedBackground="@color/colorRed"/>
+
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                     android:layout_width="fill_parent"
+                     android:layout_height="fill_parent"
+                     android:layout_below="@id/mstb_multi_id"
+                     android:layout_centerHorizontal="true"
+                     android:padding="20dp"
+                    >
+
+            <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/colorGray">
+
+
+
+                <TextView
+                        android:text="Tip Total"
+                        android:textSize="20dp"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:layout_column="1" />
+                <TextView
+                        android:text="{Tip Total}"
+                        android:textSize="20dp"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:layout_column="2" />
+
+            </TableRow>
+
+            <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/colorWhite">
+
+                <TextView
+                        android:text="Hours Scheduled"
+                        android:textSize="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:layout_column="1" />
+                <TextView
+                        android:text="{Hours}"
+                        android:textSize="20dp"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:layout_column="2" />
+
+            </TableRow>
+
+            <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/colorGray">
+
+                <TextView
+                        android:text="Hours Worked"
+                        android:textSize="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:layout_column="1" />
+                <TextView
+                        android:text="{Hours}"
+                        android:textSize="20dp"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:layout_column="2" />
+
+            </TableRow>
+
+        </TableLayout>
 
 
     </RelativeLayout>
