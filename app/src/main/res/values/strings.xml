@@ -18,10 +18,9 @@
     <string name="cheese">1 cheese</string>
     <string name="default_customer_note0">Please use side door</string>
     <string name="default_amount0">$18.52 cash</string>
-    <string-array name="planets_array">
-        <item>Mer</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
+    <string-array name="time_array">
+        <item>Day</item>
+        <item>Week</item>
+        <item>Month</item>
     </string-array>
 </resources>
