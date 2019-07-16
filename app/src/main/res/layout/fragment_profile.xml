@@ -91,6 +91,7 @@
         />
 
         <ToggleButton
+                android:id="@+id/fragment_profile_toggleButton_clock"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="185dp"
@@ -101,8 +102,10 @@
         />
 
         <ImageView
+                android:layout_below="@id/fragment_profile_toggleButton_clock"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:layout_height="55dp"
+                android:background="@color/colorGreen"/>
 
         <org.honorato.multistatetogglebutton.MultiStateToggleButton
                 android:id="@+id/mstb_multi_id"
@@ -115,7 +118,8 @@
                 mstb:mstbPrimaryColor="@color/colorWhite"
                 mstb:mstbSecondaryColor="@color/colorBlack"
                 mstb:mstbColorNotPressedBackground="@color/colorBlack"
-                mstb:mstbColorPressedBackground="@color/colorRed"/>
+                mstb:mstbColorPressedBackground="@color/colorRed"
+                android:background="@color/colorGreen"/>
 
 
         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -123,6 +127,7 @@
                      android:layout_height="fill_parent"
                      android:layout_below="@id/mstb_multi_id"
                      android:layout_centerHorizontal="true"
+                     android:background="@color/colorGreen"
                      android:padding="20dp"
                     >
 
