@@ -2,10 +2,11 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:mstb="http://schemas.android.com/apk/res-auto">
+        android:layout_height="match_parent" xmlns:mstb="http://schemas.android.com/apk/res-auto"
+        android:background="@color/colorGreen">
 
     <ImageButton
-            android:id="@+id/fragment_home_imageButton_profile"
+            android:id="@+id/fragment_settings_imageButton_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@color/colorRed"
@@ -17,7 +18,7 @@
     />
 
     <ImageButton
-            android:id="@+id/fragment_home_imageButton_settings"
+            android:id="@+id/fragment_settings_imageButton_settings"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@color/colorRed"
@@ -29,10 +30,10 @@
     />
 
     <ImageView
-            android:id="@+id/fragment_profile_imageView_logo"
+            android:id="@+id/fragment_settings_imageView_logo"
             android:layout_width="210dp"
             android:layout_height="100dp"
-            android:background="@color/colorWhite"
+            android:background="@color/colorGreen"
             android:src="@drawable/logo"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
@@ -41,84 +42,143 @@
 
     />
 
-    <RelativeLayout
+    <TextView
+            android:id="@+id/fragment_settings_textView_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fragment_profile_imageView_logo">
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/fragment_settings_imageView_logo"
+            android:text="Settings"
+            android:textSize="40sp"
+            android:textStyle="bold"
+    />
 
-        <TextView
-                android:id="@+id/fragment_profile_textView_driver_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorGreen"
-                android:text="Driver Name"
-                android:textSize="20sp"
-                android:padding="5dp"
-        />
+    <TextView
+            android:id="@+id/fragment_settings_textView_navigation"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_settings_textView_title"
+            android:background="@color/colorGray"
+            android:text="Navigation"
+            android:textSize="25sp"
+            android:layout_margin="5dp"
+    />
 
-        <TextView
-                android:id="@+id/fragment_profile_textView_driver_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/fragment_profile_textView_driver_name"
-                android:background="@color/colorGreen"
-                android:text="Driver Employee Number"
-                android:textSize="20sp"
-                android:padding="5dp"
-        />
+    <TextView
+            android:id="@+id/fragment_settings_textView_navigation_delivery"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_settings_textView_navigation"
+            android:background="@color/colorGray"
+            android:text="Delivery"
+            android:textSize="25sp"
+            android:layout_marginLeft="105dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+    />
 
-        <TextView
-                android:id="@+id/fragment_profile_textView_clock_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/fragment_profile_textView_driver_number"
-                android:background="@color/colorGreen"
-                android:text="Clocked Out - "
-                android:textSize="20sp"
-                android:padding="5dp"
-        />
+    <TextView
+            android:id="@+id/fragment_settings_textView_navigation_to_store"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_settings_textView_navigation_delivery"
+            android:background="@color/colorGray"
+            android:text="To Store"
+            android:textSize="25sp"
+            android:layout_marginLeft="105dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+    />
 
-        <TextView
-                android:id="@+id/fragment_profile_textView_clock_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="3:48"
-                android:textSize="20sp"
-                android:padding="5dp"
-                android:background="@color/colorGreen"
-                android:layout_toRightOf="@id/fragment_profile_textView_clock_status"
-                android:layout_below="@id/fragment_profile_textView_driver_number"
-        />
+    <TextView
+            android:id="@+id/fragment_settings_textView_alert_sound"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_settings_textView_navigation_to_store"
+            android:background="@color/colorGray"
+            android:text="Alert Sound"
+            android:textSize="25sp"
+            android:layout_margin="5dp"
+    />
 
-        <ToggleButton
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="185dp"
-                android:layout_below="@id/fragment_profile_textView_driver_number"
-                android:textOn="Clock Out"
-                android:textOff="Clock In"
-                android:background="@color/colorRed"
-        />
+    <TextView
+            android:id="@+id/fragment_settings_textView_color_blind_mode"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_settings_textView_alert_sound"
+            android:background="@color/colorGray"
+            android:text="Color Blind Mode"
+            android:textSize="25sp"
+            android:layout_margin="5dp"
+    />
 
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+    <Switch
+            android:id="@+id/fragment_settings_switch_navigation"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/fragment_settings_textView_navigation"
+            android:layout_below="@+id/fragment_settings_textView_title"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:thumbTint="@color/colorBlack"
+            android:track="@color/colorRed"
+    />
 
-        <org.honorato.multistatetogglebutton.MultiStateToggleButton
-                android:id="@+id/mstb_multi_id"
-                android:layout_width="400dp"
-                android:layout_height="40dp"
-                android:layout_below="@+id/fragment_profile_textView_clock_status"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dip"
-                mstb:values="@array/time_array"
-                mstb:mstbPrimaryColor="@color/colorWhite"
-                mstb:mstbSecondaryColor="@color/colorBlack"
-                mstb:mstbColorNotPressedBackground="@color/colorBlack"
-                mstb:mstbColorPressedBackground="@color/colorRed"/>
+    <Switch
+            android:id="@+id/fragment_settings_switch_navigation_delivery"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/fragment_settings_textView_navigation_delivery"
+            android:layout_below="@+id/fragment_settings_textView_navigation"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:thumbTint="@color/colorBlack"
+            android:track="@color/colorRed"
+    />
 
+    <Switch
+            android:id="@+id/fragment_settings_switch_navigation_to_store"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/fragment_settings_textView_navigation_to_store"
+            android:layout_below="@+id/fragment_settings_textView_navigation_delivery"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:thumbTint="@color/colorBlack"
+            android:track="@color/colorRed"
+    />
 
-    </RelativeLayout>
+    <Switch
+            android:id="@+id/fragment_settings_switch_alert_sound"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/fragment_settings_textView_alert_sound"
+            android:layout_below="@+id/fragment_settings_textView_navigation_to_store"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:thumbTint="@color/colorBlack"
+            android:track="@color/colorRed"
+    />
+
+    <Switch
+            android:id="@+id/fragment_settings_switch_color_blind_mode"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/fragment_settings_textView_color_blind_mode"
+            android:layout_below="@+id/fragment_settings_textView_alert_sound"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:thumbTint="@color/colorBlack"
+            android:track="@color/colorRed"
+    />
+
 
 
 
