@@ -5,7 +5,7 @@
         android:layout_height="match_parent" xmlns:mstb="http://schemas.android.com/apk/res-auto">
 
     <ImageButton
-            android:id="@+id/fragment_home_imageButton_profile"
+            android:id="@+id/fragment_profile_imageButton_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@color/colorRed"
@@ -17,7 +17,7 @@
     />
 
     <ImageButton
-            android:id="@+id/fragment_home_imageButton_settings"
+            android:id="@+id/fragment_profile_imageButton_settings"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@color/colorRed"
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorGreen"
-                android:text="Driver Name"
+                android:text="@string/driver_name"
                 android:textSize="20sp"
                 android:padding="5dp"
         />
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fragment_profile_textView_driver_name"
                 android:background="@color/colorGreen"
-                android:text="Driver Employee Number"
+                android:text="@string/driver_employee_number"
                 android:textSize="20sp"
                 android:padding="5dp"
         />
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fragment_profile_textView_driver_number"
                 android:background="@color/colorGreen"
-                android:text="Clocked Out - "
+                android:text="@string/clock_status"
                 android:textSize="20sp"
                 android:padding="5dp"
         />
@@ -82,7 +82,7 @@
                 android:id="@+id/fragment_profile_textView_clock_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="3:48"
+                android:text="@string/clock_time"
                 android:textSize="20sp"
                 android:padding="5dp"
                 android:background="@color/colorGreen"
@@ -96,8 +96,8 @@
                 android:layout_height="35dp"
                 android:layout_marginLeft="185dp"
                 android:layout_below="@id/fragment_profile_textView_driver_number"
-                android:textOn="Clock Out"
-                android:textOff="Clock In"
+                android:textOn="@string/clock_out"
+                android:textOff="@string/clock_in"
                 android:background="@color/colorRed"
         />
 
@@ -139,14 +139,16 @@
 
 
                 <TextView
-                        android:text="Tip Total"
+                        android:id="@+id/fragment_profile_textView_tip_total_title"
+                        android:text="@string/tip_total_title"
                         android:textSize="20dp"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/border"
                         android:layout_column="1" />
                 <TextView
-                        android:text="{Tip Total}"
+                        android:id="@+id/fragment_profile_textView_tip_total"
+                        android:text="@string/tip_total"
                         android:textSize="20dp"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
@@ -161,14 +163,16 @@
                     android:background="@color/colorWhite">
 
                 <TextView
-                        android:text="Hours Scheduled"
+                        android:id="@+id/fragment_profile_textView_hours_scheduled_titled"
+                        android:text="@string/hours_scheduled_title"
                         android:textSize="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/border"
                         android:layout_column="1" />
                 <TextView
-                        android:text="{Hours}"
+                        android:id="@+id/fragment_profile_textView_hours_scheduled"
+                        android:text="@string/scheduled_hours"
                         android:textSize="20dp"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
@@ -183,14 +187,16 @@
                     android:background="@color/colorGray">
 
                 <TextView
-                        android:text="Hours Worked"
+                        android:id="@+id/fragment_profile_textView_hours_worked_title"
+                        android:text="@string/hours_worked_title"
                         android:textSize="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/border"
                         android:layout_column="1" />
                 <TextView
-                        android:text="{Hours}"
+                        android:id="@+id/fragment_profile_textView_hours_worked"
+                        android:text="@string/hours_worked"
                         android:textSize="20dp"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
