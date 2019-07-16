@@ -22,6 +22,8 @@
     <string name="order_id0">d554367</string>
     <string name="line_divider">________________</string>
     <string name="got_it">Got It!</string>
+    <string name="accept_route">Accept Route</string>
+    <string name="order_address0">6715 E. Ridgeway Dr.</string>
     <string-array name="time_array">
         <item>Day</item>
         <item>Week</item>
