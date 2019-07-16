@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorRed"
+                android:padding="32dp"
+>
+
+    <TextView
+            android:id="@+id/order_id_text"
+            android:text="@string/order_id0"
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+    />
+
+    <TextView
+            android:id="@+id/item0_text"
+            android:text="@string/large_cheese"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_id_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24sp"
+    />
+
+    <TextView
+            android:id="@+id/item1_text"
+            android:text="@string/garlic"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item0_text"
+            android:layout_centerHorizontal="true"
+    />
+
+    <TextView
+            android:id="@+id/item2_text"
+            android:text="@string/cheese"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item1_text"
+            android:layout_centerHorizontal="true"
+    />
+
+    <TextView
+            android:id="@+id/item3_text"
+            android:text="@string/pepsi"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item2_text"
+            android:layout_centerHorizontal="true"
+    />
+
+    <TextView
+            android:id="@+id/line_divider_text"
+            android:text="@string/line_divider"
+            android:textStyle="bold"
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item3_text"
+            android:layout_centerHorizontal="true"
+    />
+    <Button
+        android:id="@+id/got_it_text"
+        android:text="@string/got_it"
+        android:background="@color/colorRed"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line_divider_text"
+        android:layout_centerHorizontal="true"
+/>
+
+</RelativeLayout>
