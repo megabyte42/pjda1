@@ -9,14 +9,14 @@
 
     <TextView
             android:id="@+id/dialog_login_name_caption"
-            android:text="@string/name"
+            android:text="Employee Number: "
             android:textSize="32sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
     />
 
     <EditText
-            android:id="@+id/dialog_login_name_edit_text"
+            android:id="@+id/dialog_login_employee_number_edit_text"
             android:textSize="32sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
     />
 
     <EditText
-            android:id="@+id/dialog_login_password_edit_text"
+            android:id="@+id/dialog_login_employee_password_edit_text"
             android:textSize="32sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

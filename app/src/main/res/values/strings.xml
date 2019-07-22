@@ -47,6 +47,7 @@
     <string name="call_customer">Call Customer?</string>
     <string name="log_cash_tip">Log Cash Tip</string>
     <string name="return_to_store">Return to Store</string>
+    <string name="dialog_login_title">Login</string>
     <string-array name="time_array">
         <item>Day</item>
         <item>Week</item>
