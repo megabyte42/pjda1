@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_login.view.*
 class SplashFragment() : Fragment() {
 
 
-    var listener: OnLoginButtonPressedListener? = null
+    var listener: ButtonListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +30,10 @@ class SplashFragment() : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnLoginButtonPressedListener) {
+        if (context is ButtonListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement OnLoginButtonPressedListener")
+            throw RuntimeException(context.toString() + " must implement ButtonListener")
         }
     }
 
@@ -43,7 +43,4 @@ class SplashFragment() : Fragment() {
     }
 
 
-    interface OnLoginButtonPressedListener {
-        fun onLoginButtonPressed()
-    }
 }

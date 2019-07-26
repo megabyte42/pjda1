@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_login.view.*
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 
-class HomeFragment: Fragment() {
+class ProfileFragment: Fragment() {
 
     var listener: ButtonListener? = null
 
@@ -18,16 +18,10 @@ class HomeFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d(Constants.TAG, "create home fragment view")
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        view.fragment_home_imageButton_profile.setOnClickListener {
-            listener?.onProfileButtonPressed()
-        }
-        view.fragment_home_imageButton_settings.setOnClickListener {
+        Log.d(Constants.TAG, "create profile fragment view")
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        view.fragment_profile_imageButton_settings.setOnClickListener {
             listener?.onSettingsButtonPressed()
-        }
-        view.fragment_home_button_recent_deliveries.setOnClickListener {
-            listener?.onRecentDeliveriesButtonPressed()
         }
         return view
     }
@@ -37,12 +31,17 @@ class HomeFragment: Fragment() {
         if (context is ButtonListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement ButtonListener") as Throwable
+            throw RuntimeException(context.toString() + " must implement OnProfileButtonPressedListener") as Throwable
         }
     }
 
     override fun onDetach() {
         super.onDetach()
-        listener = null
+        //listener = null
     }
+
+//    interface OnProfileButtonPressedListener {
+//        fun onProfileButtonPressed()
+//    }
+
 }

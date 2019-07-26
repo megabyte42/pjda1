@@ -58,17 +58,17 @@
                 android:layout_height="wrap_content"
         android:layout_below="@id/fragment_recent_deliveries_textView_title">
 
-            <android.support.v7.widget.SearchView
-                    android:id="@+id/fragment_recent_deliveries_searchView_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <!--<android.support.v7.widget.SearchView-->
+                    <!--android:id="@+id/fragment_recent_deliveries_searchView_bar"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
 
-            </android.support.v7.widget.SearchView>
+            <!--</android.support.v7.widget.SearchView>-->
 
-            <ImageView android:layout_width="match_parent" android:layout_height="200dp"
-                       android:background="@color/colorGreen"
-                       android:layout_below="@id/fragment_recent_deliveries_searchView_bar"
-            />
+            <!--<ImageView android:layout_width="match_parent" android:layout_height="200dp"-->
+                       <!--android:background="@color/colorGreen"-->
+                       <!--android:layout_below="@id/fragment_recent_deliveries_searchView_bar"-->
+            <!--/>-->
         </RelativeLayout>
 
 

@@ -2,6 +2,7 @@ package com.lab1.basicactivity
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 //import android.support.design.widget.Snackbar
 //import android.support.v7.app.AppCompatActivity;
@@ -15,8 +16,9 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_login.view.*
 
-class MainActivity : AppCompatActivity(), SplashFragment.OnLoginButtonPressedListener,
-    HomeFragment.OnProfileButtonPressedListener {
+class MainActivity : AppCompatActivity(),
+    ButtonListener{
+
 
     private val auth = FirebaseAuth.getInstance()
     lateinit var authStateListener: FirebaseAuth.AuthStateListener
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity(), SplashFragment.OnLoginButtonPressedLis
     private fun switchToFragment(fragment: Fragment) {
         switchTo = fragment
         val ft = supportFragmentManager.beginTransaction()
-        ft.replace(R.id.fragment_container, switchTo)
+        ft.replace(R.id.fragment_container, switchTo).addToBackStack("adding frag to backStack")
         ft.commit()
     }
 
@@ -83,13 +85,30 @@ class MainActivity : AppCompatActivity(), SplashFragment.OnLoginButtonPressedLis
         builder.create().show()
     }
 
+    override fun onBackPressed() {
+        val ft = supportFragmentManager.beginTransaction()
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            Log.d(Constants.TAG, "popping backstack")
+            supportFragmentManager.popBackStackImmediate()
+        }
+        ft.commit()
+    }
+
     // Interface methods
     override fun onLoginButtonPressed() {
         showLoginButtonDialog()
     }
 
     override fun onProfileButtonPressed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        switchToFragment(ProfileFragment())
+    }
+
+    override fun onSettingsButtonPressed() {
+        switchToFragment(SettingsFragment())
+    }
+
+    override fun onRecentDeliveriesButtonPressed() {
+        switchToFragment(RecentDeliveriesFragment())
     }
 
 }

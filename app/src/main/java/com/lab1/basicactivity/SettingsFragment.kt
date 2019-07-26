@@ -7,10 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.fragment_login.view.*
+import kotlinx.android.synthetic.main.fragment_settings.view.*
 
-class HomeFragment: Fragment() {
+class SettingsFragment: Fragment() {
 
     var listener: ButtonListener? = null
 
@@ -18,16 +17,10 @@ class HomeFragment: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d(Constants.TAG, "create home fragment view")
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        view.fragment_home_imageButton_profile.setOnClickListener {
+        Log.d(Constants.TAG, "create profile fragment view")
+        val view = inflater.inflate(R.layout.fragment_settings, container, false)
+        view.fragment_settings_imageButton_profile.setOnClickListener {
             listener?.onProfileButtonPressed()
-        }
-        view.fragment_home_imageButton_settings.setOnClickListener {
-            listener?.onSettingsButtonPressed()
-        }
-        view.fragment_home_button_recent_deliveries.setOnClickListener {
-            listener?.onRecentDeliveriesButtonPressed()
         }
         return view
     }
