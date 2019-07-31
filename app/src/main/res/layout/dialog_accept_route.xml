@@ -29,7 +29,7 @@
     />
 
     <TextView
-            android:id="@+id/item0_text"
+            android:id="@+id/items_text"
             android:text="@string/large_cheese"
             android:textSize="24sp"
             android:layout_width="wrap_content"
@@ -39,35 +39,6 @@
             android:layout_marginTop="24sp"
     />
 
-    <TextView
-            android:id="@+id/item1_text"
-            android:text="@string/garlic"
-            android:textSize="24sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/item0_text"
-            android:layout_centerHorizontal="true"
-    />
-
-    <TextView
-            android:id="@+id/item2_text"
-            android:text="@string/cheese"
-            android:textSize="24sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/item1_text"
-            android:layout_centerHorizontal="true"
-    />
-
-    <TextView
-            android:id="@+id/item3_text"
-            android:text="@string/pepsi"
-            android:textSize="24sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/item2_text"
-            android:layout_centerHorizontal="true"
-    />
 
     <TextView
             android:id="@+id/amount_text"
@@ -75,7 +46,7 @@
             android:textSize="24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/item3_text"
+            android:layout_below="@id/items_text"
             android:layout_marginTop="24sp"
             android:layout_centerHorizontal="true"
     />

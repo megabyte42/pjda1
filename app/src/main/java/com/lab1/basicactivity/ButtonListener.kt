@@ -5,4 +5,5 @@ interface ButtonListener {
     fun onProfileButtonPressed()
     fun onSettingsButtonPressed()
     fun onRecentDeliveriesButtonPressed()
+    fun onTriggerSoftware()
 }

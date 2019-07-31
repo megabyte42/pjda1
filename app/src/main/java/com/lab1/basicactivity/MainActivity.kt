@@ -14,21 +14,25 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialog_accept_route.view.*
+import kotlinx.android.synthetic.main.dialog_confirm_order.view.*
 import kotlinx.android.synthetic.main.dialog_login.view.*
 
 class MainActivity : AppCompatActivity(),
-    ButtonListener{
+    ButtonListener, IRoute {
+
 
 
     private val auth = FirebaseAuth.getInstance()
     lateinit var authStateListener: FirebaseAuth.AuthStateListener
     private var currentEmployee = "00000"
+    var currentOrder: Order? = null
 
     // Request code for launching the sign in Intent.
     private val RC_SIGN_IN = 1
 
     var switchTo: Fragment = SplashFragment()
-    val inStoreSystem: InStoreSystem = InStoreSystem()
+    val inStoreSystem: InStoreSystem = InStoreSystem(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +98,60 @@ class MainActivity : AppCompatActivity(),
         ft.commit()
     }
 
+    private fun showDialogAcceptRoute() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.accept_route))
+
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_accept_route, null, false)
+        view.address_text.text = currentOrder!!.address
+        view.items_text.text = currentOrder!!.items
+        view.amount_text.text = currentOrder!!.amount
+        builder.setView(view)
+
+        //TODO: ideally either click anywhere in red or click away from red to ignore
+
+        builder.setPositiveButton(android.R.string.ok) { _, _ ->
+            inStoreSystem.acceptRoute(true)
+        }
+
+        builder.setNegativeButton(android.R.string.cancel) {_, _ ->
+            inStoreSystem.acceptRoute(false)
+        }
+        builder.create().show()
+    }
+
     // Interface methods
+    override fun onSendRoutingAssignment(order: Order) {
+        currentOrder = order
+        showDialogAcceptRoute()
+    }
+
+    override fun onRouteAccepted() {
+        val builder = AlertDialog.Builder(this)
+        //builder.setTitle(getString(R.string.accept_route))
+
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_order, null, false)
+        view.order_id_text.text = currentOrder!!.orderID
+        view.dialog_confirm_order_items_text.text = currentOrder!!.items
+        builder.setView(view)
+
+        //TODO: ideally either click anywhere in red or click away from red to ignore
+
+        builder.setPositiveButton(android.R.string.ok) { _, _ ->
+            inStoreSystem.confirmOrder(true)
+        }
+
+        builder.setNegativeButton(android.R.string.cancel) {_, _ ->
+            inStoreSystem.confirmOrder(false)
+        }
+        builder.create().show()
+    }
+
+    override fun onOrderConfirmed() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // TODO: launch google maps, if maps are set
+    }
+
     override fun onLoginButtonPressed() {
         showLoginButtonDialog()
     }
@@ -109,6 +166,16 @@ class MainActivity : AppCompatActivity(),
 
     override fun onRecentDeliveriesButtonPressed() {
         switchToFragment(RecentDeliveriesFragment())
+    }
+
+    override fun onTriggerSoftware() {
+        if (!inStoreSystem.eventSeriesStatus) {
+            Log.d(Constants.TAG, "starting an event series")
+            inStoreSystem.triggerNextEventSeries()
+        } else {
+            // TODO: event series started... maybe tell InStore to send next notification?
+        }
+
     }
 
 }
