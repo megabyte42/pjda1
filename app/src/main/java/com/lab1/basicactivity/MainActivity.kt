@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onProfileButtonPressed() {
-        switchToFragment(ProfileFragment())
+        switchToFragment(ProfileFragment("12345"))
     }
 
     override fun onSettingsButtonPressed() {
