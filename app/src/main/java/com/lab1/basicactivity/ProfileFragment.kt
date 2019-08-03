@@ -59,6 +59,10 @@ class ProfileFragment(employeeNum: String): Fragment() {
         view!!.fragment_profile_textView_hours_scheduled.text = count
     }
 
+    fun updateTipTotal(total: String) {
+        view!!.fragment_profile_textView_tip_total.text = total
+    }
+
 
 
 }

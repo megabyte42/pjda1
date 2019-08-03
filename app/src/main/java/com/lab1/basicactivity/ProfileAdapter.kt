@@ -35,51 +35,73 @@ class ProfileAdapter(context: Context, employeeNum: String) {
     }
 
     private fun byDay(fragment: ProfileFragment) {
-        DateTimeFormatter.ISO_INSTANT.format(Instant.now())
+        val now = LocalDateTime.now(ZoneOffset.UTC)
+        val seconds = now.atZone(ZoneOffset.UTC).toEpochSecond()
+        val fmt = SimpleDateFormat("yyyyMMdd")
         hoursRef.whereEqualTo("employeeNum", employeeNum).orderBy(Hour.HOUR_KEY, Query.Direction.ASCENDING).get().addOnSuccessListener { snapshot: QuerySnapshot? ->
             var hs = snapshot!!.toObjects(Hour::class.java)
             for (h in hs) {
-                val now = LocalDateTime.now(ZoneOffset.UTC)
-                val seconds = now.atZone(ZoneOffset.UTC).toEpochSecond()
                 Log.d(Constants.TAG, "timeIn: ${h.timeIn!!.seconds} now: $seconds")
-                if ((h.timeIn!!.seconds > seconds)) {
-                    // these timestamps are for times that haven't happened yet, likely future scheduled hours
-                    } else {
-                    Log.d(Constants.TAG, "timeIn occurred before current time")
-                    // Hours Scheduled
-                    val fmt = SimpleDateFormat("yyyyMMdd")
-                    //if (h.timeIn is Timestamp) {
-                    Log.d(Constants.TAG, "timeIn simple: ${fmt.format(h.timeIn!!.toDate())} current simple: ${fmt.format(Timestamp(seconds, 0).toDate())}")
-                        //if (fmt.format(h.timeIn!!.toDate()).equals(fmt.format(seconds))) {
-                        //if ()
-                            Log.d(Constants.TAG, "found timeIn on same day as today")
-                            if (h.type == "scheduled") {
-                                fragment.updateHoursScheduled(h.count)
-                            }
-                        //}
-                    //}
-
-                    // Hours Worked
+                // Hours Scheduled
+                Log.d(Constants.TAG, "timeIn simple: ${fmt.format(h.timeIn!!.toDate())} current simple: ${fmt.format(Timestamp(seconds, 0).toDate())}")
+                if (fmt.format(h.timeIn!!.toDate()).equals(fmt.format(Timestamp(seconds, 0).toDate()))) {
+                    Log.d(Constants.TAG, "found timeIn on same day as today")
+                    if (h.type == "scheduled") {
+                        fragment.updateHoursScheduled(h.count)
+                    }
+                }
+                // Hours Worked
+            }
+        }
+        tipsRef.whereEqualTo("employeeNum", employeeNum).get().addOnSuccessListener { snapshot: QuerySnapshot ->
+            var ts = snapshot!!.toObjects(Tip::class.java)
+            var tipTotal: Int = 0 // TODO: support for decimal
+            for (t in ts) {
+                if (fmt.format(t.time!!.toDate()).equals(fmt.format(Timestamp(seconds, 0).toDate()))) {
+                    //Log.d(Constants.TAG, "found timeIn on same day as today")
+                    tipTotal += t.amount.toInt()
                 }
             }
-//            if (hs.contains(pics[position])) {
-//                picsRef.document(pics[position].id).delete()
-//                Log.d(Constants.TAG, "allowed to delete so delete")
-//                notifyDataSetChanged()
-//            } else {
-//                var t = Toast.makeText(context, "You do not have permission to delete this item", Toast.LENGTH_LONG)
-//                t.show()
-//                notifyDataSetChanged()
-//            }
+            fragment.updateTipTotal(tipTotal.toString())
         }
     }
 
     private fun byWeek(fragment: ProfileFragment) {
-
+        // TODO
     }
 
     private fun byMonth(fragment: ProfileFragment) {
-
+        val now = LocalDateTime.now(ZoneOffset.UTC)
+        val seconds = now.atZone(ZoneOffset.UTC).toEpochSecond()
+        val fmt = SimpleDateFormat("yyyyMM")
+        hoursRef.whereEqualTo("employeeNum", employeeNum).orderBy(Hour.HOUR_KEY, Query.Direction.ASCENDING).get().addOnSuccessListener { snapshot: QuerySnapshot? ->
+            var hs = snapshot!!.toObjects(Hour::class.java)
+            var hoursTotal: Int = 0
+            for (h in hs) {
+                Log.d(Constants.TAG, "timeIn: ${h.timeIn!!.seconds} now: $seconds")
+                // Hours Scheduled
+                Log.d(Constants.TAG, "timeIn simple: ${fmt.format(h.timeIn!!.toDate())} current simple: ${fmt.format(Timestamp(seconds, 0).toDate())}")
+                if (fmt.format(h.timeIn!!.toDate()).equals(fmt.format(Timestamp(seconds, 0).toDate()))) {
+                    Log.d(Constants.TAG, "found timeIn on same day as today")
+                    if (h.type == "scheduled") {
+                        hoursTotal = hoursTotal + h.count.toInt()
+                    }
+                }
+                // Hours Worked
+            }
+            fragment.updateHoursScheduled(hoursTotal.toString())
+        }
+        tipsRef.whereEqualTo("employeeNum", employeeNum).get().addOnSuccessListener { snapshot: QuerySnapshot ->
+            var ts = snapshot!!.toObjects(Tip::class.java)
+            var tipTotal: Int = 0 // TODO: support for decimal
+            for (t in ts) {
+                if (fmt.format(t.time!!.toDate()).equals(fmt.format(Timestamp(seconds, 0).toDate()))) {
+                    //Log.d(Constants.TAG, "found timeIn on same day as today")
+                    tipTotal += t.amount.toInt()
+                }
+            }
+            fragment.updateTipTotal(tipTotal.toString())
+        }
     }
 
 

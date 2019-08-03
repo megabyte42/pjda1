@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Parcelable
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.Exclude
+import com.google.firebase.firestore.ServerTimestamp
 import kotlinx.android.parcel.Parcelize
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
@@ -16,15 +17,17 @@ data class Route(var address: String = "",
                  var phone: String = "",
                  var orderNum: String = "",
                  var desc: String = "",
-                 var amount: Number = 0,
-                 var tip: Number = 0,
-                 var paymentMethod: String = "",
-                 var time: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())) : Parcelable {
+                 var amount: String = "",
+                 var tip: String = "",
+                 var paymentMethod: String = "") : Parcelable {
 
     @get:Exclude
     var id = ""
+    @ServerTimestamp
+    var time: com.google.firebase.Timestamp? = null
 
     companion object {
+        const val ROUTE_KEY = "time"
         fun fromSnapshot(snapshot: DocumentSnapshot) : Route? {
             val r = snapshot.toObject(Route::class.java)
             r?.id = snapshot.id
