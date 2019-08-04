@@ -30,28 +30,6 @@ class RecentDeliveriesAdapter(context: Context, fragment: RecentDeliveriesFragme
                         break
                     }
                 }
-
-//            for (docChange in snapshot!!.documentChanges) {
-//                val h = Hour.fromSnapshot(docChange.document)
-//                when (docChange.type) {
-//                    DocumentChange.Type.ADDED -> {
-//                        pics.add(p!!)
-//                        notifyDataSetChanged()
-//                    }
-//                    DocumentChange.Type.REMOVED -> {
-//                        pics.remove(p)
-//                        notifyDataSetChanged()
-//                    }
-//                    DocumentChange.Type.MODIFIED -> {
-//                        for ((pos, pic) in pics.withIndex()) {
-//                            if (p!!.id == pic!!.id) {
-//                                edit(pos, p.caption, p.url)
-//                                notifyDataSetChanged()
-//                                break
-//                            }
-//                        }
-//                    }
-//                }
             }
         }
     }

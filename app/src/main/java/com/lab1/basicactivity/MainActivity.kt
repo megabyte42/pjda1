@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity(),
     ButtonListener, IRoute {
 
 
-
     private val auth = FirebaseAuth.getInstance()
     lateinit var authStateListener: FirebaseAuth.AuthStateListener
     private var currentEmployee = "00000"
@@ -38,11 +37,12 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        if (inStoreSystem.loginStatus.get("11111")!!) {
-            switchToFragment(HomeFragment())
-        } else {
-            switchToFragment(SplashFragment())
-        }
+//        if (inStoreSystem.loginStatus.get("11111")!!) {
+//            switchToFragment(HomeFragment())
+//        } else {
+//            switchToFragment(SplashFragment())
+//        }
+        switchToFragment(SplashFragment())
 
     }
 
@@ -71,18 +71,19 @@ class MainActivity : AppCompatActivity(),
 
     private fun showLoginButtonDialog() {
         val builder = AlertDialog.Builder(this)
-        //Set options
         builder.setTitle(getString(R.string.dialog_login_title))
-
-        // Content is message, view, or list of items
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_login, null, false)
         builder.setView(view)
 
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
-//            if (inStoreSystem.loginEmployee(view.dialog_login_employee_number_edit_text.toString(), view.dialog_login_employee_password_edit_text.toString())) {
+            inStoreSystem.loginEmployee(view.dialog_login_employee_number_edit_text.text.toString(), view.dialog_login_employee_password_edit_text.text.toString())
+
+
+//            inStoreSystem.loginEmployee(view.dialog_login_employee_number_edit_text.text.toString(), view.dialog_login_employee_password_edit_text.text.toString())
+//            if (inStoreSystem.loginStatus[view.dialog_login_employee_number_edit_text.text.toString()]!!) {
 //                switchToFragment(HomeFragment())
 //            }
-            switchToFragment(HomeFragment())
+            //switchToFragment(HomeFragment())
         }
 
         builder.setNegativeButton(android.R.string.cancel, null)
@@ -177,5 +178,10 @@ class MainActivity : AppCompatActivity(),
         }
 
     }
+
+    override fun sendLoginInfoBack(status: Boolean) {
+        switchToFragment(HomeFragment())
+    }
+
 
 }
