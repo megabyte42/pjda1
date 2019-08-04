@@ -17,9 +17,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_accept_route.view.*
 import kotlinx.android.synthetic.main.dialog_confirm_order.view.*
 import kotlinx.android.synthetic.main.dialog_login.view.*
+import android.content.Intent
+import android.net.Uri
+import kotlinx.android.synthetic.main.dialog_call_customer.view.*
+
 
 class MainActivity : AppCompatActivity(),
     ButtonListener, IRoute {
+
 
 
     private val auth = FirebaseAuth.getInstance()
@@ -176,6 +181,24 @@ class MainActivity : AppCompatActivity(),
         } else {
             // TODO: event series started... maybe tell InStore to send next notification?
         }
+
+    }
+
+    override fun onPhonePresesd(phone: String) {
+        Log.d(Constants.TAG, "onPhonePressed with phone number as: $phone")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.accept_route))
+
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_call_customer, null, false)
+        builder.setView(view)
+
+        view.dialog_call_customer_call_customer_button.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone))
+            startActivity(intent)
+        }
+        builder.setNegativeButton(android.R.string.cancel, null)
+
+        builder.create().show()
 
     }
 

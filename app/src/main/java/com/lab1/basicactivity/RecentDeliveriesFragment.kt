@@ -26,6 +26,9 @@ class RecentDeliveriesFragment: Fragment() {
         view.fragment_recent_deliveries_imageButton_settings.setOnClickListener {
             listener?.onSettingsButtonPressed()
         }
+        view.fragment_recent_deliveries_order_phone1.setOnClickListener {
+            listener?.onPhonePresesd(view.fragment_recent_deliveries_order_phone1.text.toString())
+        }
         return view
     }
 

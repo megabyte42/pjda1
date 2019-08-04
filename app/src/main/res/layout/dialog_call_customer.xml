@@ -16,7 +16,7 @@
     />
 
     <Button
-            android:id="@+id/call_customer_button"
+            android:id="@+id/dialog_call_customer_call_customer_button"
             android:text="@string/call"
             android:textSize="40sp"
             android:layout_width="wrap_content"
@@ -26,17 +26,6 @@
             android:layout_below="@id/call_customer_text"
     />
 
-    <Button
-            android:id="@+id/cancel_call_button"
-            android:text="@string/cancel"
-            android:textSize="40sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="40sp"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/call_customer_button"
-    />
 
 
 </RelativeLayout>

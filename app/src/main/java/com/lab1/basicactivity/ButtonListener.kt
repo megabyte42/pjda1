@@ -6,4 +6,5 @@ interface ButtonListener {
     fun onSettingsButtonPressed()
     fun onRecentDeliveriesButtonPressed()
     fun onTriggerSoftware()
+    fun onPhonePresesd(phone: String)
 }

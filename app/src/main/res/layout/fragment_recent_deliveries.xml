@@ -129,6 +129,9 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColorHighlight="@color/colorRed"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -163,6 +166,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -197,6 +201,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -231,6 +236,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -265,6 +271,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -299,6 +306,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -333,6 +341,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -367,6 +376,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -401,6 +411,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
@@ -435,6 +446,7 @@
                     android:layout_height="35dp"
                     android:background="@drawable/border"
                     android:textAlignment="center"
+                    android:clickable="true"
                     android:layout_column="3" />
         </TableRow>
 
