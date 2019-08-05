@@ -154,8 +154,11 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onOrderConfirmed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        // TODO: launch google maps, if maps are set
+       // val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=1897 N. Hunt Rd, Terre Haute, IN, 47805")
+        val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentOrder!!.address}")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
     }
 
     override fun onLoginButtonPressed() {
