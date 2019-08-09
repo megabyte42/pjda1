@@ -47,6 +47,7 @@ class RecentDeliveriesFragment: Fragment() {
     }
 
     fun updateRow(count: Int, orderNum: String, name: String, phone: String) {
+       // Log.d(Constants.TAG, "count: $count, orderNum")
         when (count) {
             1 -> {view!!.fragment_recent_deliveries_order_number1.text = orderNum
                   view!!.fragment_recent_deliveries_order_name1.text = name

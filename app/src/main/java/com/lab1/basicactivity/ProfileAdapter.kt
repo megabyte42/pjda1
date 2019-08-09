@@ -27,53 +27,21 @@ class ProfileAdapter(context: Context, employeeNum: String) {
 
     fun updateTable(position: Int, fragment: ProfileFragment) {
         when (position) {
-            0 -> byDay(fragment)
-            1 -> byWeek(fragment)
-            2 -> byMonth(fragment)
+            0 -> {  val fmt = SimpleDateFormat("yyyyMMdd")
+                    update(fragment, fmt)}
+            1 -> {  val fmt = SimpleDateFormat("ww")
+                    update(fragment, fmt)}
+            2 -> {  val fmt = SimpleDateFormat("yyyyMM")
+                    update(fragment, fmt)}
             else -> null
         }
     }
 
-    private fun byDay(fragment: ProfileFragment) {
+    private fun update(fragment: ProfileFragment, fmt: SimpleDateFormat) {
         val now = LocalDateTime.now(ZoneOffset.UTC)
         val seconds = now.atZone(ZoneOffset.UTC).toEpochSecond()
-        val fmt = SimpleDateFormat("yyyyMMdd")
-        hoursRef.whereEqualTo("employeeNum", employeeNum).orderBy(Hour.HOUR_KEY, Query.Direction.ASCENDING).get().addOnSuccessListener { snapshot: QuerySnapshot? ->
-            var hs = snapshot!!.toObjects(Hour::class.java)
-            for (h in hs) {
-                Log.d(Constants.TAG, "timeIn: ${h.timeIn!!.seconds} now: $seconds")
-                // Hours Scheduled
-                Log.d(Constants.TAG, "timeIn simple: ${fmt.format(h.timeIn!!.toDate())} current simple: ${fmt.format(Timestamp(seconds, 0).toDate())}")
-                if (fmt.format(h.timeIn!!.toDate()).equals(fmt.format(Timestamp(seconds, 0).toDate()))) {
-                    Log.d(Constants.TAG, "found timeIn on same day as today")
-                    if (h.type == "scheduled") {
-                        fragment.updateHoursScheduled(h.count)
-                    }
-                }
-                // Hours Worked
-            }
-        }
-        tipsRef.whereEqualTo("employeeNum", employeeNum).get().addOnSuccessListener { snapshot: QuerySnapshot ->
-            var ts = snapshot!!.toObjects(Tip::class.java)
-            var tipTotal: Int = 0 // TODO: support for decimal
-            for (t in ts) {
-                if (fmt.format(t.time!!.toDate()).equals(fmt.format(Timestamp(seconds, 0).toDate()))) {
-                    //Log.d(Constants.TAG, "found timeIn on same day as today")
-                    tipTotal += t.amount.toInt()
-                }
-            }
-            fragment.updateTipTotal(tipTotal.toString())
-        }
-    }
 
-    private fun byWeek(fragment: ProfileFragment) {
-        // TODO
-    }
 
-    private fun byMonth(fragment: ProfileFragment) {
-        val now = LocalDateTime.now(ZoneOffset.UTC)
-        val seconds = now.atZone(ZoneOffset.UTC).toEpochSecond()
-        val fmt = SimpleDateFormat("yyyyMM")
         hoursRef.whereEqualTo("employeeNum", employeeNum).orderBy(Hour.HOUR_KEY, Query.Direction.ASCENDING).get().addOnSuccessListener { snapshot: QuerySnapshot? ->
             var hs = snapshot!!.toObjects(Hour::class.java)
             var hoursTotal: Int = 0
@@ -103,7 +71,4 @@ class ProfileAdapter(context: Context, employeeNum: String) {
             fragment.updateTipTotal(tipTotal.toString())
         }
     }
-
-
-
 }

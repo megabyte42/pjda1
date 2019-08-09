@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">basicactivity</string>
+    <string name="app_name">Papa John\'s Delivery App</string>
     <string name="action_settings">Settings</string>
     <string name="recent_deliveries">Recent Deliveries</string>
     <string name="login">Login</string>
