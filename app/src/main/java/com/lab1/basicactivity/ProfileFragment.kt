@@ -33,9 +33,12 @@ class ProfileFragment(employeeNum: String): Fragment() {
         view.mstb_multi_id.setOnValueChangedListener { position ->
             adapter.updateTable(position, this)
         }
+        view.fragment_profile_toggleButton_clock.setOnClickListener {
+            adapter.updateProfileInfo(this)
+        }
 
         adapter.updateTable(0, this)
-
+        adapter.updateProfileInfo(this)
 
 
         return view
@@ -63,6 +66,24 @@ class ProfileFragment(employeeNum: String): Fragment() {
         view!!.fragment_profile_textView_tip_total.text = total
     }
 
+    fun updateName(name: String) {
+        view!!.fragment_profile_textView_driver_name.text = name
+    }
 
+    fun updateNumber(num: String) {
+        view!!.fragment_profile_textView_driver_number.text = num
+    }
+
+    fun updateClockStatus(clock: Boolean, time: String) {
+        if (clock) {
+            view!!.fragment_profile_toggleButton_clock.toggle()
+            view!!.fragment_profile_textView_clock_time.text = time
+            view!!.fragment_profile_textView_clock_status.text = "Clocked In -"
+        } else {
+            view!!.fragment_profile_toggleButton_clock.toggle()
+            view!!.fragment_profile_textView_clock_time.text = time
+            view!!.fragment_profile_textView_clock_status.text = "Clocked Out -"
+        }
+    }
 
 }

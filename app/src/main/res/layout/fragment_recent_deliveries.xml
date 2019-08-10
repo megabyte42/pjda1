@@ -47,6 +47,8 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/fragment_recent_deliveries_imageView_logo"
             android:text="@string/recent_deliveries"
+            android:background="@color/colorGreen"
+            android:layout_centerInParent="true"
             android:textSize="40sp"
             android:textStyle="bold"
     />

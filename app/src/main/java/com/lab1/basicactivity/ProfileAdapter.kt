@@ -37,6 +37,27 @@ class ProfileAdapter(context: Context, employeeNum: String) {
         }
     }
 
+    fun updateProfileInfo(fragment: ProfileFragment) {
+        driversRef.whereEqualTo("employeeNum", employeeNum).get().addOnSuccessListener { snapshot: QuerySnapshot? ->
+            var ds = snapshot!!.toObjects(Driver::class.java)
+            for (d in ds) {
+                fragment.updateName(d.name)
+                fragment.updateNumber(d.employeeNum)
+                val fmt = SimpleDateFormat("hh:mm")
+
+                Log.d(Constants.TAG, "time is  ${fmt.format(d.timeIO!!.toDate())}")
+                fragment.updateClockStatus(d.clockStatus, fmt.format(d.timeIO!!.toDate()))
+                Log.d(Constants.TAG, "d.id is ${d.id}")
+                var database = FirebaseFirestore.getInstance()
+                var oppositeOfCurrentStat: Boolean = !d.clockStatus
+                database.collection("Drivers").document("ioi9B6SIjvyA8oCkaNgn").update("timeIO", Timestamp.now())
+                database.collection("Drivers").document("ioi9B6SIjvyA8oCkaNgn").update("clockStatus", oppositeOfCurrentStat)
+            }
+
+        }
+    }
+
+
     private fun update(fragment: ProfileFragment, fmt: SimpleDateFormat) {
         val now = LocalDateTime.now(ZoneOffset.UTC)
         val seconds = now.atZone(ZoneOffset.UTC).toEpochSecond()
