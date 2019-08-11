@@ -7,7 +7,7 @@
 
     <ImageButton
             android:id="@+id/fragment_settings_imageButton_profile"
-            android:layout_width="100dp"
+            android:layout_width="105dp"
             android:layout_height="100dp"
             android:background="@color/colorRed"
             android:src="@drawable/profile"
@@ -19,7 +19,7 @@
 
     <ImageButton
             android:id="@+id/fragment_settings_imageButton_settings"
-            android:layout_width="100dp"
+            android:layout_width="105dp"
             android:layout_height="100dp"
             android:background="@color/colorRed"
             android:src="@drawable/settings"
@@ -31,9 +31,9 @@
 
     <ImageView
             android:id="@+id/fragment_settings_imageView_logo"
-            android:layout_width="210dp"
+            android:layout_width="190dp"
             android:layout_height="100dp"
-            android:background="@color/colorGreen"
+            android:background="@color/colorWhite"
             android:src="@drawable/logo"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
@@ -51,6 +51,7 @@
             android:text="@string/settings"
             android:textSize="40sp"
             android:textStyle="bold"
+            android:layout_centerInParent="true"
     />
 
     <TextView

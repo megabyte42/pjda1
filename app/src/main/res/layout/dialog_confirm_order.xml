@@ -6,6 +6,17 @@
                 android:padding="32dp"
 >
 
+    <Button
+            android:id="@+id/dialog_confirm_order_button"
+            android:text="Got It!"
+            android:background="@color/colorRed"
+            android:textStyle="bold"
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+    />
+
     <TextView
             android:id="@+id/order_id_text"
             android:text="@string/order_id0"
@@ -13,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_below="@id/dialog_confirm_order_button"
     />
 
     <TextView
@@ -27,26 +39,26 @@
     />
 
 
-    <TextView
-            android:id="@+id/line_divider_text"
-            android:text="@string/line_divider"
-            android:textStyle="bold"
-            android:textSize="40sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/dialog_confirm_order_items_text"
-            android:layout_centerHorizontal="true"
-    />
-    <Button
-        android:id="@+id/got_it_text"
-        android:text="@string/got_it"
-        android:background="@color/colorRed"
-        android:textStyle="bold"
-        android:textSize="40sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/line_divider_text"
-        android:layout_centerHorizontal="true"
-/>
+    <!--<TextView-->
+            <!--android:id="@+id/line_divider_text"-->
+            <!--android:text="@string/line_divider"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textSize="40sp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/dialog_confirm_order_items_text"-->
+            <!--android:layout_centerHorizontal="true"-->
+    <!--/>-->
+    <!--<Button-->
+        <!--android:id="@+id/got_it_text"-->
+        <!--android:text="@string/got_it"-->
+        <!--android:background="@color/colorRed"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textSize="40sp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/line_divider_text"-->
+        <!--android:layout_centerHorizontal="true"-->
+<!--/>-->
 
 </RelativeLayout>

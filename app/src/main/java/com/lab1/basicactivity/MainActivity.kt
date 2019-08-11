@@ -1,6 +1,8 @@
 package com.lab1.basicactivity
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,19 +20,20 @@ import kotlinx.android.synthetic.main.dialog_accept_route.view.*
 import kotlinx.android.synthetic.main.dialog_confirm_order.view.*
 import kotlinx.android.synthetic.main.dialog_login.view.*
 import android.content.Intent
+import android.location.LocationManager
 import android.net.Uri
+import android.view.View
+import kotlinx.android.synthetic.main.dialog_accept_route.view.amount_text
 import kotlinx.android.synthetic.main.dialog_call_customer.view.*
+import kotlinx.android.synthetic.main.dialog_confirm_arrived.view.*
+import kotlinx.android.synthetic.main.dialog_log_tip_or_return_to_store.view.*
 
 
 class MainActivity : AppCompatActivity(),
     ButtonListener, IRoute {
 
-
-
-    private val auth = FirebaseAuth.getInstance()
-    lateinit var authStateListener: FirebaseAuth.AuthStateListener
-    private var currentEmployee = "00000"
-    var currentOrder: Order? = null
+    var currentRoute: Route? = null
+    var wentToMaps: Boolean = false
 
     // Request code for launching the sign in Intent.
     private val RC_SIGN_IN = 1
@@ -42,25 +45,23 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-//        if (inStoreSystem.loginStatus.get("11111")!!) {
-//            switchToFragment(HomeFragment())
-//        } else {
-//            switchToFragment(SplashFragment())
-//        }
+        val prefs = getSharedPreferences(PrefHelper.PREFS, Context.MODE_PRIVATE)
+        wentToMaps = prefs.getBoolean(PrefHelper.KEY_WENT_TO_MAPS, false)
+
+        if (wentToMaps) {
+            Log.d(Constants.TAG, "already went to maps, so launch Home Fragment")
+            switchToFragment(HomeFragment())
+        }
         switchToFragment(SplashFragment())
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
@@ -82,15 +83,7 @@ class MainActivity : AppCompatActivity(),
 
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             inStoreSystem.loginEmployee(view.dialog_login_employee_number_edit_text.text.toString(), view.dialog_login_employee_password_edit_text.text.toString())
-
-
-//            inStoreSystem.loginEmployee(view.dialog_login_employee_number_edit_text.text.toString(), view.dialog_login_employee_password_edit_text.text.toString())
-//            if (inStoreSystem.loginStatus[view.dialog_login_employee_number_edit_text.text.toString()]!!) {
-//                switchToFragment(HomeFragment())
-//            }
-            //switchToFragment(HomeFragment())
         }
-
         builder.setNegativeButton(android.R.string.cancel, null)
         builder.create().show()
     }
@@ -105,43 +98,37 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun showDialogAcceptRoute() {
+        Log.d(Constants.TAG, "show dialog accept route")
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.accept_route))
 
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_accept_route, null, false)
-        view.address_text.text = currentOrder!!.address
-        view.items_text.text = currentOrder!!.items
-        view.amount_text.text = currentOrder!!.amount
+        view.address_text.text = currentRoute!!.address
+        view.items_text.text = currentRoute!!.desc
+        view.amount_text.text = "$" +  currentRoute!!.amount
         builder.setView(view)
 
-        //TODO: ideally either click anywhere in red or click away from red to ignore
-
-        builder.setPositiveButton(android.R.string.ok) { _, _ ->
+        builder.setPositiveButton(android.R.string.ok, DialogInterface.OnClickListener { dialog, id ->
             inStoreSystem.acceptRoute(true)
-        }
+            dialog.cancel()
+        })
 
-        builder.setNegativeButton(android.R.string.cancel) {_, _ ->
+        builder.setNegativeButton(android.R.string.cancel, DialogInterface.OnClickListener {dialog, id ->
+
             inStoreSystem.acceptRoute(false)
-        }
-        builder.create().show()
-    }
+            dialog.cancel()
 
-    // Interface methods
-    override fun onSendRoutingAssignment(order: Order) {
-        currentOrder = order
-        showDialogAcceptRoute()
+        })
+        builder.create().show()
     }
 
     override fun onRouteAccepted() {
         val builder = AlertDialog.Builder(this)
-        //builder.setTitle(getString(R.string.accept_route))
-
+        builder.setTitle("Confirm Order")
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_order, null, false)
-        view.order_id_text.text = currentOrder!!.orderID
-        view.dialog_confirm_order_items_text.text = currentOrder!!.items
+        view.order_id_text.text = currentRoute!!.orderNum
+        view.dialog_confirm_order_items_text.text = currentRoute!!.desc
         builder.setView(view)
-
-        //TODO: ideally either click anywhere in red or click away from red to ignore
 
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             inStoreSystem.confirmOrder(true)
@@ -153,12 +140,75 @@ class MainActivity : AppCompatActivity(),
         builder.create().show()
     }
 
+    private fun showConfirmArrivedDialog() {
+        Log.d(Constants.TAG, "show confirm arrived dialog")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Arrived")
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_arrived, null, false)
+        builder.setView(view)
+
+        view.amount_text.text = "$" + currentRoute!!.amount
+        view.instructions_text.text = currentRoute!!.instructions
+
+        builder.setPositiveButton(android.R.string.ok) { _, _ ->
+            inStoreSystem.confirmArrived(true)
+        }
+
+        builder.setNegativeButton(android.R.string.cancel) {_, _ ->
+            inStoreSystem.confirmArrived(false)
+        }
+        builder.create().show()
+    }
+
+    private fun showReturnOrTipDialog() {
+        Log.d(Constants.TAG, "show return or log tip dialog")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Log Tip or Return to Store")
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_log_tip_or_return_to_store, null, false)
+        builder.setView(view)
+
+        builder.setPositiveButton(android.R.string.ok) {_, _ ->
+            currentRoute!!.tip = view.dialog_log_tip_amount.text.toString()
+            wentToMaps = false
+            val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=1234 Wabash Ave, Terre Haute, IN 47807")
+            //val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentRoute!!.address}")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
+        builder.setNegativeButton(android.R.string.cancel) {_, _ ->
+            wentToMaps = false
+            val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=1234 Wabash Ave, Terre Haute, IN 47807")
+            //val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentRoute!!.address}")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
+
+        builder.create().show()
+    }
+
+    // Interface methods
+    override fun onSendRoutingAssignment(route: Route) {
+        currentRoute = route
+        showDialogAcceptRoute()
+    }
+
+
+
     override fun onOrderConfirmed() {
+        wentToMaps = true
+        inStoreSystem.eventSeriesStatus = false
        // val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=1897 N. Hunt Rd, Terre Haute, IN, 47805")
-        val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentOrder!!.address}")
+
+        val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentRoute!!.address}")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)
+    }
+
+    override fun onArrived() {
+        showReturnOrTipDialog()
     }
 
     override fun onLoginButtonPressed() {
@@ -178,14 +228,18 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onTriggerSoftware() {
-        if (!inStoreSystem.eventSeriesStatus) {
+        if (wentToMaps) {
+            Log.d(Constants.TAG, "already went to maps, launch confirm arrived dialog")
+            showConfirmArrivedDialog()
+        } else if (!inStoreSystem.eventSeriesStatus){
             Log.d(Constants.TAG, "starting an event series")
             inStoreSystem.triggerNextEventSeries()
         } else {
-            // TODO: event series started... maybe tell InStore to send next notification?
+            Log.d(Constants.TAG, "idk what else to do")
         }
-
     }
+
+
 
     override fun onPhonePresesd(phone: String) {
         Log.d(Constants.TAG, "onPhonePressed with phone number as: $phone")
@@ -200,7 +254,6 @@ class MainActivity : AppCompatActivity(),
             startActivity(intent)
         }
         builder.setNegativeButton(android.R.string.cancel, null)
-
         builder.create().show()
 
     }
@@ -209,5 +262,24 @@ class MainActivity : AppCompatActivity(),
         switchToFragment(HomeFragment())
     }
 
+    override fun onPause() {
+        super.onPause()
+        val prefs = getSharedPreferences(PrefHelper.PREFS, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        editor.putString(PrefHelper.KEY_ORDER_ADDRESS, currentRoute!!.address)
+        editor.putString(PrefHelper.KEY_ORDER_AMOUNT, currentRoute!!.amount)
+        editor.putString(PrefHelper.KEY_ORDER_DESC, currentRoute!!.desc)
+        editor.putString(PrefHelper.KEY_ORDER_INSTRUCTIONS, currentRoute!!.instructions)
+        editor.putString(PrefHelper.KEY_ORDER_NAME, currentRoute!!.name)
+        editor.putString(PrefHelper.KEY_ORDER_NUMBER, currentRoute!!.orderNum)
+        editor.putString(PrefHelper.KEY_ORDER_PAYMENT_METHOD, currentRoute!!.paymentMethod)
+        editor.putString(PrefHelper.KEY_ORDER_PHONE, currentRoute!!.phone)
+        //editor.(PrefHelper.KEY_ORDER_TIME, TimeStampObject(currentOrder!!.time))
+        editor.putString(PrefHelper.KEY_ORDER_TIP, currentRoute!!.tip)
+
+        editor.putBoolean(PrefHelper.KEY_WENT_TO_MAPS, wentToMaps!!)
+
+        editor.commit()
+    }
 
 }

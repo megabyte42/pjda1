@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import java.text.SimpleDateFormat
 import java.util.*
@@ -103,16 +104,24 @@ class InStoreSystem(context: Context) {
         }
     }
 
-    private fun sendRoutingAssignment() {
-        var newOrder = Order("Order Name",
-                            "1212 Test Ln, Testville, TN, 12121",
-                            "1231231212",
-                            SimpleDateFormat("yyyyMMdd_HHmmss").format(Date()),
-                            "14 +Cheese") //TODO: get random newOrder
-        routesRef.add(newOrder)
-        router!!.onSendRoutingAssignment(newOrder)
+    fun confirmArrived(bool: Boolean) {
+        if (bool) {
+            router!!.onArrived()
+        }
     }
 
-
-
+    private fun sendRoutingAssignment() {
+        routesRef.orderBy(Route.ROUTE_KEY, Query.Direction.ASCENDING).get().addOnSuccessListener { snapshot: QuerySnapshot? ->
+            Log.d(Constants.TAG, "got an orders by route thing")
+            var rs = snapshot!!.toObjects(Route::class.java)
+            var count: Int = 1
+            for (r in rs) {
+                router!!.onSendRoutingAssignment(r)
+                count += 1
+                if (count > 1) {
+                    break
+                }
+            }
+        }
+    }
 }

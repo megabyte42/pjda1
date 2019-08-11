@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/dialog_log_tip_or_return_to_store"
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorRed"
+        android:padding="32dp"
 >
 
     <Button
-            android:id="@+id/log_cash_tip_button"
-            android:text="@string/log_cash_tip"
+            android:id="@+id/arrived_text"
+            android:text="Log Cash Tip"
             android:textSize="40sp"
-            android:textStyle="bold"
-            android:background="@color/colorRed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="30dp"
+            android:background="@color/colorRed"
             android:layout_centerHorizontal="true"
     />
 
-    <Button
-            android:id="@+id/return_to_store_button"
-            android:text="@string/return_to_store"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:background="@color/colorRed"
+    <TextView
+            android:id="@+id/amount_text"
+            android:text="@string/amount"
+            android:textSize="32sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="30dp"
-            android:layout_marginTop="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/log_cash_tip_button"
+            android:layout_below="@+id/arrived_text"
     />
+
+    <EditText
+            android:id="@+id/dialog_log_tip_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="enter tip amount"
+            android:inputType="textCapWords"
+            android:textSize="32sp"
+            android:importantForAutofill="no"
+            android:layout_below="@+id/amount_text"
+            android:background="@color/colorWhite"
+
+    />
+
 
 </RelativeLayout>

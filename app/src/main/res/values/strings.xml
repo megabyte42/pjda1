@@ -8,7 +8,7 @@
     <string name="password">Password:</string>
     <string name="decimal">.</string>
     <string name="blank_cost">__</string>
-    <string name="amount">Amount: $</string>
+    <string name="amount">Amount: </string>
     <string name="this_order">This Order</string>
     <string name="default_customer0">Mary P.</string>
     <string name="default_phone_number0">555-555-5555</string>
@@ -20,7 +20,7 @@
     <string name="default_amount0">$18.52 cash</string>
     <string name="arrived">Arrived!</string>
     <string name="order_id0">d554367</string>
-    <string name="line_divider">________________</string>
+    <string name="line_divider">_____________</string>
     <string name="got_it">Got It!</string>
     <string name="accept_route">Accept Route</string>
     <string name="order_address0">6715 E. Ridgeway Dr.</string>

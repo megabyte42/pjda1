@@ -7,12 +7,13 @@
               android:padding="32dp"
 >
 
-    <TextView
+    <Button
             android:id="@+id/arrived_text"
             android:text="@string/arrived"
             android:textSize="40sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/colorRed"
             android:layout_centerHorizontal="true"
     />
 
@@ -28,7 +29,7 @@
     />
 
     <TextView
-            android:id="@+id/note_text"
+            android:id="@+id/instructions_text"
             android:text="@string/default_customer_note0"
             android:textSize="24sp"
             android:layout_width="wrap_content"

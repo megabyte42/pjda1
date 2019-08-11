@@ -17,6 +17,7 @@ data class Route(var address: String = "",
                  var phone: String = "",
                  var orderNum: String = "",
                  var desc: String = "",
+                 var instructions: String = "",
                  var amount: String = "",
                  var tip: String = "",
                  var paymentMethod: String = "") : Parcelable {
