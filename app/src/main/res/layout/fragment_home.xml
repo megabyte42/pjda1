@@ -50,7 +50,7 @@
     />
 
     <ImageView
-            android:id="@+id/fragment_home_imageButton_pizza_background"
+            android:id="@+id/fragment_home_imageView_pizza_background"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/pizza"

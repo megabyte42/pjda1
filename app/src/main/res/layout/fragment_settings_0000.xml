@@ -29,7 +29,7 @@
             android:layout_alignParentRight="true"
     />
 
-    <ImageView
+    <ImageButton
             android:id="@+id/fragment_settings_imageButton_logo"
             android:layout_width="190dp"
             android:layout_height="100dp"

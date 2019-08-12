@@ -58,7 +58,13 @@ class SettingsFragment: Fragment() {
             if (navigationToStore && navigationFromStore) {
                 navigationBoth = true
                 view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
-            } else  {
+            } else if (!navigationFromStore && navigationToStore){
+                navigationBoth = false
+                view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+            } else if (navigationFromStore && !navigationToStore) {
+                navigationBoth = false
+                view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+            } else if (!navigationToStore && !navigationFromStore) {
                 navigationBoth = false
                 view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
             }
@@ -68,7 +74,13 @@ class SettingsFragment: Fragment() {
             if (navigationFromStore && navigationToStore) {
                 navigationBoth = true
                 view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
-            } else  {
+            } else if (!navigationToStore && navigationFromStore){
+                navigationBoth = false
+                view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+            } else if (navigationToStore && !navigationFromStore) {
+                navigationBoth = false
+                view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+            } else if (!navigationFromStore && !navigationToStore) {
                 navigationBoth = false
                 view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
             }
