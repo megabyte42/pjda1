@@ -25,7 +25,10 @@ class ProfileFragment(employeeNum: String): Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(Constants.TAG, "create profile fragment view")
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        var view = inflater.inflate(R.layout.fragment_profile, container, false)
+        if (colorBlindMode) {
+            view = inflater.inflate(R.layout.fragment_profile_0000, container, false)
+        }
         val adapter = ProfileAdapter(context!!, employeeNum)
         view.fragment_profile_imageButton_settings.setOnClickListener {
             listener?.onSettingsButtonPressed()
@@ -39,7 +42,6 @@ class ProfileFragment(employeeNum: String): Fragment() {
 
         adapter.updateTable(0, this)
         adapter.updateProfileInfo(this)
-
 
         return view
     }

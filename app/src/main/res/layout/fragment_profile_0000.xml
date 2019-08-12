@@ -8,7 +8,7 @@
             android:id="@+id/fragment_profile_imageButton_profile"
             android:layout_width="105dp"
             android:layout_height="100dp"
-            android:background="@color/colorRed"
+            android:background="@color/colorOrange"
             android:src="@drawable/profile"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
@@ -20,7 +20,7 @@
             android:id="@+id/fragment_profile_imageButton_settings"
             android:layout_width="105dp"
             android:layout_height="100dp"
-            android:background="@color/colorRed"
+            android:background="@color/colorOrange"
             android:src="@drawable/settings"
             android:scaleType="fitCenter"
             android:adjustViewBounds="true"
@@ -50,7 +50,7 @@
                 android:id="@+id/fragment_profile_textView_driver_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorGreen"
+                android:background="@color/colorBlue"
                 android:text="@string/driver_name"
                 android:textSize="20sp"
                 android:padding="5dp"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fragment_profile_textView_driver_name"
-                android:background="@color/colorGreen"
+                android:background="@color/colorBlue"
                 android:text="@string/driver_employee_number"
                 android:textSize="20sp"
                 android:padding="5dp"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fragment_profile_textView_driver_number"
-                android:background="@color/colorGreen"
+                android:background="@color/colorBlue"
                 android:text="@string/clock_status"
                 android:textSize="20sp"
                 android:padding="5dp"
@@ -85,7 +85,7 @@
                 android:text="@string/clock_time"
                 android:textSize="20sp"
                 android:padding="5dp"
-                android:background="@color/colorGreen"
+                android:background="@color/colorBlue"
                 android:layout_toRightOf="@id/fragment_profile_textView_clock_status"
                 android:layout_below="@id/fragment_profile_textView_driver_number"
         />
@@ -98,14 +98,14 @@
                 android:layout_below="@id/fragment_profile_textView_driver_number"
                 android:textOn="@string/clock_out"
                 android:textOff="@string/clock_in"
-                android:background="@color/colorRed"
+                android:background="@color/colorOrange"
         />
 
         <ImageView
                 android:layout_below="@id/fragment_profile_toggleButton_clock"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:background="@color/colorGreen"/>
+                android:background="@color/colorBlue"/>
 
         <org.honorato.multistatetogglebutton.MultiStateToggleButton
                 android:id="@+id/mstb_multi_id"
@@ -118,8 +118,8 @@
                 mstb:mstbPrimaryColor="@color/colorWhite"
                 mstb:mstbSecondaryColor="@color/colorBlack"
                 mstb:mstbColorNotPressedBackground="@color/colorBlack"
-                mstb:mstbColorPressedBackground="@color/colorRed"
-                android:background="@color/colorGreen"/>
+                mstb:mstbColorPressedBackground="@color/colorOrange"
+                android:background="@color/colorBlue"/>
 
 
         <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -127,9 +127,9 @@
                      android:layout_height="fill_parent"
                      android:layout_below="@id/mstb_multi_id"
                      android:layout_centerHorizontal="true"
-                     android:background="@color/colorGreen"
+                     android:background="@color/colorBlue"
                      android:padding="20dp"
-                    >
+        >
 
             <TableRow
                     android:layout_width="fill_parent"

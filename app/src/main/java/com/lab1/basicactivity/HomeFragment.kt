@@ -19,7 +19,10 @@ class HomeFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(Constants.TAG, "create home fragment view")
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        var view = inflater.inflate(R.layout.fragment_home, container, false)
+        if (colorBlindMode) {
+            view = inflater.inflate(R.layout.fragment_home_0000, container, false)
+        }
         view.fragment_home_imageButton_profile.setOnClickListener {
             listener?.onProfileButtonPressed()
         }

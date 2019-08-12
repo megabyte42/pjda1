@@ -6,40 +6,36 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-//import android.support.design.widget.Snackbar
-//import android.support.v7.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_accept_route.view.*
 import kotlinx.android.synthetic.main.dialog_confirm_order.view.*
 import kotlinx.android.synthetic.main.dialog_login.view.*
 import android.content.Intent
-import android.location.LocationManager
 import android.net.Uri
-import android.view.View
 import kotlinx.android.synthetic.main.dialog_accept_route.view.amount_text
 import kotlinx.android.synthetic.main.dialog_call_customer.view.*
 import kotlinx.android.synthetic.main.dialog_confirm_arrived.view.*
 import kotlinx.android.synthetic.main.dialog_log_tip_or_return_to_store.view.*
 
+var colorBlindMode: Boolean = false
 
 class MainActivity : AppCompatActivity(),
     ButtonListener, IRoute {
 
-    var currentRoute: Route? = null
-    var wentToMaps: Boolean = false
 
-    // Request code for launching the sign in Intent.
-    private val RC_SIGN_IN = 1
+
+    var currentRoute: Route? = null
+    var currentDriver: Driver? = null
+    var wentToMaps: Boolean = false
 
     var switchTo: Fragment = SplashFragment()
     val inStoreSystem: InStoreSystem = InStoreSystem(this)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +98,10 @@ class MainActivity : AppCompatActivity(),
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.accept_route))
 
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_accept_route, null, false)
+        var view = LayoutInflater.from(this).inflate(R.layout.dialog_accept_route, null, false)
+        if (colorBlindMode) {
+            view = LayoutInflater.from(this).inflate(R.layout.dialog_accept_route_0000, null, false)
+        }
         view.address_text.text = currentRoute!!.address
         view.items_text.text = currentRoute!!.desc
         view.amount_text.text = "$" +  currentRoute!!.amount
@@ -112,12 +111,9 @@ class MainActivity : AppCompatActivity(),
             inStoreSystem.acceptRoute(true)
             dialog.cancel()
         })
-
         builder.setNegativeButton(android.R.string.cancel, DialogInterface.OnClickListener {dialog, id ->
-
             inStoreSystem.acceptRoute(false)
             dialog.cancel()
-
         })
         builder.create().show()
     }
@@ -125,7 +121,10 @@ class MainActivity : AppCompatActivity(),
     override fun onRouteAccepted() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Confirm Order")
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_order, null, false)
+        var view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_order, null, false)
+        if (colorBlindMode) {
+            view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_order_0000, null, false)
+        }
         view.order_id_text.text = currentRoute!!.orderNum
         view.dialog_confirm_order_items_text.text = currentRoute!!.desc
         builder.setView(view)
@@ -133,7 +132,6 @@ class MainActivity : AppCompatActivity(),
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             inStoreSystem.confirmOrder(true)
         }
-
         builder.setNegativeButton(android.R.string.cancel) {_, _ ->
             inStoreSystem.confirmOrder(false)
         }
@@ -144,7 +142,10 @@ class MainActivity : AppCompatActivity(),
         Log.d(Constants.TAG, "show confirm arrived dialog")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Arrived")
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_arrived, null, false)
+        var view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_arrived, null, false)
+        if (colorBlindMode) {
+            view = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_arrived_0000, null, false)
+        }
         builder.setView(view)
 
         view.amount_text.text = "$" + currentRoute!!.amount
@@ -153,7 +154,6 @@ class MainActivity : AppCompatActivity(),
         builder.setPositiveButton(android.R.string.ok) { _, _ ->
             inStoreSystem.confirmArrived(true)
         }
-
         builder.setNegativeButton(android.R.string.cancel) {_, _ ->
             inStoreSystem.confirmArrived(false)
         }
@@ -164,22 +164,23 @@ class MainActivity : AppCompatActivity(),
         Log.d(Constants.TAG, "show return or log tip dialog")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Log Tip or Return to Store")
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_log_tip_or_return_to_store, null, false)
+        var view = LayoutInflater.from(this).inflate(R.layout.dialog_log_tip_or_return_to_store, null, false)
+        if (colorBlindMode) {
+            view = LayoutInflater.from(this).inflate(R.layout.dialog_log_tip_or_return_to_store_0000, null, false)
+        }
         builder.setView(view)
 
         builder.setPositiveButton(android.R.string.ok) {_, _ ->
             currentRoute!!.tip = view.dialog_log_tip_amount.text.toString()
             wentToMaps = false
-            val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=1234 Wabash Ave, Terre Haute, IN 47807")
-            //val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentRoute!!.address}")
+            val gmmIntentUri = Uri.parse(getString(R.string.STORE_ADDRESS))
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
         }
         builder.setNegativeButton(android.R.string.cancel) {_, _ ->
             wentToMaps = false
-            val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=1234 Wabash Ave, Terre Haute, IN 47807")
-            //val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentRoute!!.address}")
+            val gmmIntentUri = Uri.parse(getString(R.string.STORE_ADDRESS))
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
@@ -199,7 +200,6 @@ class MainActivity : AppCompatActivity(),
     override fun onOrderConfirmed() {
         wentToMaps = true
         inStoreSystem.eventSeriesStatus = false
-       // val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=1897 N. Hunt Rd, Terre Haute, IN, 47805")
 
         val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentRoute!!.address}")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -216,7 +216,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onProfileButtonPressed() {
-        switchToFragment(ProfileFragment("12345"))
+        switchToFragment(ProfileFragment(currentDriver!!.employeeNum))
     }
 
     override fun onSettingsButtonPressed() {
@@ -225,6 +225,12 @@ class MainActivity : AppCompatActivity(),
 
     override fun onRecentDeliveriesButtonPressed() {
         switchToFragment(RecentDeliveriesFragment())
+    }
+
+    override fun toggleColorBlindMode(checked: Boolean) {
+        Log.d(Constants.TAG, "setting colorBlindMode to $checked")
+        colorBlindMode = checked
+        switchToFragment(SettingsFragment())
     }
 
     override fun onTriggerSoftware() {
@@ -256,6 +262,10 @@ class MainActivity : AppCompatActivity(),
         builder.setNegativeButton(android.R.string.cancel, null)
         builder.create().show()
 
+    }
+
+    override fun setDriver(d: Driver) {
+        currentDriver = d
     }
 
     override fun sendLoginInfoBack(status: Boolean) {

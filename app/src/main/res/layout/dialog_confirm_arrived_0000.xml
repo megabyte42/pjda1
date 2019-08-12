@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorOrange"
+        android:padding="32dp"
+>
+
+    <Button
+            android:id="@+id/arrived_text"
+            android:text="@string/arrived"
+            android:textSize="40sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorOrange"
+            android:layout_centerHorizontal="true"
+    />
+
+    <TextView
+            android:id="@+id/amount_text"
+            android:text="@string/default_amount0"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/arrived_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24sp"
+    />
+
+    <TextView
+            android:id="@+id/instructions_text"
+            android:text="@string/default_customer_note0"
+            android:textSize="24sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/amount_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24sp"
+    />
+
+</RelativeLayout>

@@ -23,8 +23,6 @@ class InStoreSystem(context: Context) {
     var router: IRoute? = null
 
 
-    //var ordersRef = FirebaseFirestore.getInstance().collection("orders")
-
     init {
         if (context is IRoute) {
             router = context
@@ -78,6 +76,7 @@ class InStoreSystem(context: Context) {
                         Log.d(Constants.TAG, "passwords match")
                         loginStatus[employeeNumber] = true
                         router!!.sendLoginInfoBack(true)
+                        router!!.setDriver(d)
                     }
                 }
             }

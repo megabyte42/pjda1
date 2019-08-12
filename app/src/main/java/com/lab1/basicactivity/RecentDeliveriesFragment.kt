@@ -19,7 +19,10 @@ class RecentDeliveriesFragment: Fragment() {
     ): View? {
         Log.d(Constants.TAG, "create recent deliveries fragment view")
         val adapter = RecentDeliveriesAdapter(context!!, this)
-        val view = inflater.inflate(R.layout.fragment_recent_deliveries, container, false)
+        var view = inflater.inflate(R.layout.fragment_recent_deliveries, container, false)
+        if (colorBlindMode) {
+            view = inflater.inflate(R.layout.fragment_recent_deliveries_0000, container, false)
+        }
         view.fragment_recent_deliveries_imageButton_profile.setOnClickListener {
             listener?.onProfileButtonPressed()
         }

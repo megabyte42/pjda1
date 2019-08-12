@@ -6,4 +6,5 @@ interface IRoute {
     fun onOrderConfirmed()
     fun sendLoginInfoBack(status: Boolean)
     fun onArrived()
+    fun setDriver(d: Driver)
 }

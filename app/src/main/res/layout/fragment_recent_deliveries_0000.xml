@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageButton
+            android:id="@+id/fragment_recent_deliveries_imageButton_profile"
+            android:layout_width="105dp"
+            android:layout_height="100dp"
+            android:background="@color/colorOrange"
+            android:src="@drawable/profile"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+    />
+
+    <ImageButton
+            android:id="@+id/fragment_recent_deliveries_imageButton_settings"
+            android:layout_width="105dp"
+            android:layout_height="100dp"
+            android:background="@color/colorOrange"
+            android:src="@drawable/settings"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+    />
+
+    <ImageView
+            android:id="@+id/fragment_recent_deliveries_imageView_logo"
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:background="@color/colorWhite"
+            android:src="@drawable/logo"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+    />
+
+    <TextView
+            android:id="@+id/fragment_recent_deliveries_textView_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_recent_deliveries_imageView_logo"
+            android:text="@string/recent_deliveries"
+            android:background="@color/colorBlue"
+            android:layout_centerInParent="true"
+            android:textSize="40sp"
+            android:textStyle="bold"
+    />
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent"
+                 android:layout_below="@id/fragment_recent_deliveries_textView_title"
+                 android:layout_centerHorizontal="true"
+                 android:background="@color/colorBlue"
+                 android:padding="5dp"
+    >
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number_title"
+                    android:text="Order"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name_title"
+                    android:text="Name"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone_title"
+                    android:text="Phone"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="3" />
+
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number1"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name1"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone1"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColorHighlight="@color/colorOrange"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number2"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name2"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone2"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number3"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name3"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone3"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number4"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name4"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone4"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number5"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name5"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone5"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number6"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name6"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone6"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number7"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name7"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone7"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number8"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name8"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone8"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number9"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name9"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone9"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorGray">
+
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_number10"
+                    android:text="{order}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="1" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_name10"
+                    android:text="{name}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:layout_column="2" />
+            <TextView
+                    android:id="@+id/fragment_recent_deliveries_order_phone10"
+                    android:text="{phone}"
+                    android:textSize="13dp"
+                    android:layout_width="133dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/border"
+                    android:textAlignment="center"
+                    android:clickable="true"
+                    android:layout_column="3" />
+        </TableRow>
+
+
+
+    </TableLayout>
+
+
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_recent_deliveries_textView_title">
+
+        <!--<android.support.v7.widget.SearchView-->
+        <!--android:id="@+id/fragment_recent_deliveries_searchView_bar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--</android.support.v7.widget.SearchView>-->
+
+        <!--<ImageView android:layout_width="match_parent" android:layout_height="200dp"-->
+        <!--android:background="@color/colorGreen"-->
+        <!--android:layout_below="@id/fragment_recent_deliveries_searchView_bar"-->
+        <!--/>-->
+    </RelativeLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

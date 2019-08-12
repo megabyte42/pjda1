@@ -7,4 +7,5 @@ interface ButtonListener {
     fun onRecentDeliveriesButtonPressed()
     fun onTriggerSoftware()
     fun onPhonePresesd(phone: String)
+    fun toggleColorBlindMode(checked: Boolean)
 }
