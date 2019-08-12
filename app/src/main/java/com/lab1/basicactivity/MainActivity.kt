@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.dialog_confirm_arrived.view.*
 import kotlinx.android.synthetic.main.dialog_log_tip_or_return_to_store.view.*
 
 var colorBlindMode: Boolean = false
+var navigationToStore: Boolean = true
+var navigationFromStore: Boolean = true
+var navigationBoth: Boolean = true
 
 class MainActivity : AppCompatActivity(),
     ButtonListener, IRoute {
@@ -173,17 +176,22 @@ class MainActivity : AppCompatActivity(),
         builder.setPositiveButton(android.R.string.ok) {_, _ ->
             currentRoute!!.tip = view.dialog_log_tip_amount.text.toString()
             wentToMaps = false
-            val gmmIntentUri = Uri.parse(getString(R.string.STORE_ADDRESS))
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
+            if (navigationBoth || navigationToStore) {
+                val gmmIntentUri = Uri.parse(getString(R.string.STORE_ADDRESS))
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+            }
+
         }
         builder.setNegativeButton(android.R.string.cancel) {_, _ ->
             wentToMaps = false
-            val gmmIntentUri = Uri.parse(getString(R.string.STORE_ADDRESS))
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
+            if (navigationBoth || navigationToStore) {
+                val gmmIntentUri = Uri.parse(getString(R.string.STORE_ADDRESS))
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+            }
         }
 
         builder.create().show()
@@ -201,10 +209,13 @@ class MainActivity : AppCompatActivity(),
         wentToMaps = true
         inStoreSystem.eventSeriesStatus = false
 
-        val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentRoute!!.address}")
-        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-        mapIntent.setPackage("com.google.android.apps.maps")
-        startActivity(mapIntent)
+        if (navigationBoth || navigationFromStore) {
+            val gmmIntentUri = Uri.parse("geo:39.4667,87.4139?q=${currentRoute!!.address}")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
+
     }
 
     override fun onArrived() {
@@ -225,6 +236,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun onRecentDeliveriesButtonPressed() {
         switchToFragment(RecentDeliveriesFragment())
+    }
+
+    override fun onHomeButtonPressed() {
+        switchToFragment(HomeFragment())
     }
 
     override fun toggleColorBlindMode(checked: Boolean) {

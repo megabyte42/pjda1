@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.fragment_recent_deliveries.view.*
 
 class RecentDeliveriesFragment: Fragment() {
@@ -31,6 +32,9 @@ class RecentDeliveriesFragment: Fragment() {
         }
         view.fragment_recent_deliveries_order_phone1.setOnClickListener {
             listener?.onPhonePresesd(view.fragment_recent_deliveries_order_phone1.text.toString())
+        }
+        view.fragment_recent_deliveries_imageButton_logo.setOnClickListener {
+            listener?.onHomeButtonPressed()
         }
         return view
     }

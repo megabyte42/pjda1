@@ -23,13 +23,14 @@ class SettingsFragment: Fragment() {
         var view = inflater.inflate(R.layout.fragment_settings, container, false)
         if (colorBlindMode) {
             Log.d(Constants.TAG, "toggle should be to right")
-            view!!.fragment_settings_switch_color_blind_mode.toggle()
-        }
-
-
-        if (colorBlindMode) {
             view = inflater.inflate(R.layout.fragment_settings_0000, container, false)
+
         }
+
+        updateView(view)
+//        if (colorBlindMode) {
+//            view = inflater.inflate(R.layout.fragment_settings_0000, container, false)
+//        }
 
         view!!.fragment_settings_imageButton_profile.setOnClickListener {
             listener?.onProfileButtonPressed()
@@ -38,7 +39,51 @@ class SettingsFragment: Fragment() {
             Log.d(Constants.TAG, "color bind check trying to check as: $isChecked")
             listener?.toggleColorBlindMode(isChecked)
         }
+        view!!.fragment_settings_switch_navigation.setOnCheckedChangeListener {buttonView, isChecked ->
+            navigationBoth = isChecked
+            if (isChecked) {
+                navigationFromStore = isChecked
+                navigationToStore = isChecked
+                view!!.fragment_settings_switch_navigation_delivery.isChecked = navigationFromStore
+                view!!.fragment_settings_switch_navigation_to_store.isChecked = navigationToStore
+            } else {
+                navigationFromStore = isChecked
+                navigationToStore = isChecked
+                view!!.fragment_settings_switch_navigation_delivery.isChecked = navigationFromStore
+                view!!.fragment_settings_switch_navigation_to_store.isChecked = navigationToStore
+            }
+        }
+        view!!.fragment_settings_switch_navigation_delivery.setOnCheckedChangeListener {buttonView, isChecked ->
+            navigationFromStore = isChecked
+            if (navigationToStore && navigationFromStore) {
+                navigationBoth = true
+                view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+            } else  {
+                navigationBoth = false
+                view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+            }
+        }
+        view!!.fragment_settings_switch_navigation_to_store.setOnCheckedChangeListener {buttonView, isChecked ->
+            navigationToStore = isChecked
+            if (navigationFromStore && navigationToStore) {
+                navigationBoth = true
+                view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+            } else  {
+                navigationBoth = false
+                view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+            }
+        }
+        view!!.fragment_settings_imageButton_logo.setOnClickListener {
+            listener?.onHomeButtonPressed()
+        }
         return view
+    }
+
+    private fun updateView(view: View) {
+        view!!.fragment_settings_switch_navigation.isChecked = navigationBoth
+        view!!.fragment_settings_switch_navigation_delivery.isChecked = navigationFromStore
+        view!!.fragment_settings_switch_navigation_to_store.isChecked = navigationToStore
+        view!!.fragment_settings_switch_color_blind_mode.isChecked = colorBlindMode
     }
 
     override fun onAttach(context: Context) {

@@ -32,7 +32,7 @@ class HomeFragment: Fragment() {
         view.fragment_home_button_recent_deliveries.setOnClickListener {
             listener?.onRecentDeliveriesButtonPressed()
         }
-        view.fragment_home_imageView_pizza_background.setOnClickListener {
+        view.fragment_home_imageButton_pizza_background.setOnClickListener {
             listener?.onTriggerSoftware()
         }
         return view

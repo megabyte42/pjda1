@@ -8,4 +8,5 @@ interface ButtonListener {
     fun onTriggerSoftware()
     fun onPhonePresesd(phone: String)
     fun toggleColorBlindMode(checked: Boolean)
+    fun onHomeButtonPressed()
 }

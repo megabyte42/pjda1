@@ -39,6 +39,9 @@ class ProfileFragment(employeeNum: String): Fragment() {
         view.fragment_profile_toggleButton_clock.setOnClickListener {
             adapter.updateProfileInfo(this)
         }
+        view.fragment_profile_imageButton_logo.setOnClickListener {
+            listener?.onHomeButtonPressed()
+        }
 
         adapter.updateTable(0, this)
         adapter.updateProfileInfo(this)

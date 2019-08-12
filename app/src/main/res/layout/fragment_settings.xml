@@ -29,8 +29,8 @@
             android:layout_alignParentRight="true"
     />
 
-    <ImageView
-            android:id="@+id/fragment_settings_imageView_logo"
+    <ImageButton
+            android:id="@+id/fragment_settings_imageButton_logo"
             android:layout_width="190dp"
             android:layout_height="100dp"
             android:background="@color/colorWhite"
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/fragment_settings_imageView_logo"
+            android:layout_below="@id/fragment_settings_imageButton_logo"
             android:text="@string/settings"
             android:textSize="40sp"
             android:textStyle="bold"
@@ -116,6 +116,7 @@
             android:layout_marginBottom="5dp"
             android:thumbTint="@color/colorBlack"
             android:track="@color/colorRed"
+            android:checked="true"
     />
 
     <Switch
@@ -129,6 +130,7 @@
             android:layout_marginBottom="5dp"
             android:thumbTint="@color/colorBlack"
             android:track="@color/colorRed"
+            android:checked="true"
     />
 
     <Switch
@@ -142,6 +144,7 @@
             android:layout_marginBottom="5dp"
             android:thumbTint="@color/colorBlack"
             android:track="@color/colorRed"
+            android:checked="true"
     />
 
 
@@ -156,6 +159,7 @@
             android:layout_marginBottom="5dp"
             android:thumbTint="@color/colorBlack"
             android:track="@color/colorRed"
+            android:checked="false"
     />
 
 

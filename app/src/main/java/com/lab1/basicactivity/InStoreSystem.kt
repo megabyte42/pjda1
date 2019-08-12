@@ -93,6 +93,8 @@ class InStoreSystem(context: Context) {
         if (bool) {
             // TODO: cool db stuff of changing delivery status
             router!!.onRouteAccepted()
+        } else {
+            eventSeriesStatus = false
         }
     }
 

@@ -28,8 +28,8 @@
             android:layout_alignParentRight="true"
     />
 
-    <ImageView
-            android:id="@+id/fragment_recent_deliveries_imageView_logo"
+    <ImageButton
+            android:id="@+id/fragment_recent_deliveries_imageButton_logo"
             android:layout_width="190dp"
             android:layout_height="100dp"
             android:background="@color/colorWhite"
@@ -44,7 +44,7 @@
             android:id="@+id/fragment_recent_deliveries_textView_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fragment_recent_deliveries_imageView_logo"
+            android:layout_below="@id/fragment_recent_deliveries_imageButton_logo"
             android:text="@string/recent_deliveries"
             android:background="@color/colorBlue"
             android:layout_centerInParent="true"
